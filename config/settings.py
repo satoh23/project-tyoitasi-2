@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG')
 
-ALLOWED_HOSTS = ['www.tyoitasi.com', 'project-tyoitasi.herokuapp.com']
+ALLOWED_HOSTS = ['project-tyoitasi.herokuapp.com', 'www.tyoitasi.com']
 
 
 # Application definition
@@ -179,7 +179,7 @@ REST_USE_JWT = True
 JWT_AUTH_COOKIE = 'access'
 JWT_AUTH_REFRESH_COOKIE = 'refresh'
 JWT_AUTH_HTTPONLY = True
-# JWT_AUTH_SECURE = True
+JWT_AUTH_SECURE = True
 REST_AUTH_SERIALIZERS = {
     'USER_DETAILS_SERIALIZER': 'accounts.serializers.CustomUserSerializer'
 }
@@ -208,3 +208,9 @@ REST_FRAMEWORK = {
         'dj_rest_auth.utils.JWTCookieAuthentication',
     ],
 }
+
+# SSL
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SECURE_SSL_REDIRECT = False
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
