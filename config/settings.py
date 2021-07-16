@@ -144,7 +144,7 @@ AUTH_USER_MODEL = 'accounts.CustomUser'
 
 # cors設定
 CORS_ALLOWED_ORIGINS = (
-    'http://localhost:3000',
+    'https://project-tyoitasi.vercel.app',
 )
 CORS_ALLOW_CREDENTIALS = True
 
