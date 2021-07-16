@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
-    'sslserver',
     'corsheaders',
     'allauth',
     'allauth.account',
@@ -65,7 +64,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django_cookies_samesite.middleware.CookiesSameSite',
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -149,7 +147,6 @@ CORS_ALLOWED_ORIGINS = (
     'https://project-tyoitasi.vercel.app',
 )
 CORS_ALLOW_CREDENTIALS = True
-SESSION_COOKIE_SAMESITE = 'None'
 JWT_AUTH_SAMESITE = 'None'
 
 # allauth設定
