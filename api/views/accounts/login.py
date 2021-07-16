@@ -11,8 +11,26 @@ from rest_framework import status
 from rest_framework.generics import GenericAPIView
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
+import datetime
 
 from accounts.serializers import CustomLoginSerializer
+
+def set_userid_cookies(response):
+    userid = response.data['user']['id']
+    max_age = 24 * 60 * 60
+    expires = datetime.datetime.strftime(
+        datetime.datetime.utcnow() + datetime.timedelta(seconds=max_age),
+        "%a, %d-%b-%Y %H:%M:%S GMT",
+    )
+
+    response.set_cookie(
+        'UID',
+        userid,
+        max_age=max_age,
+        expires=expires,
+        samesite='Lax',
+        secure=True,
+    )
 
 
 class LoginView(GenericAPIView):
@@ -84,6 +102,7 @@ class LoginView(GenericAPIView):
         if getattr(settings, 'REST_USE_JWT', False):
             from dj_rest_auth.jwt_auth import set_jwt_cookies
             set_jwt_cookies(response, self.access_token, self.refresh_token)
+            set_userid_cookies(response)
 
         return response
 
