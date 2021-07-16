@@ -14,6 +14,7 @@ import os
 from datetime import timedelta
 from pathlib import Path
 
+from Crypto.PublicKey import RSA
 from decouple import config
 from dj_database_url import parse as dburl
 
@@ -183,6 +184,9 @@ REST_AUTH_SERIALIZERS = {
 }
 
 # simple_jwt設定
+key = RSA.generate(2048)
+PRIVATE_KEY = key.export_key()
+PUBLIC_KEY = key.publickey().export_key()
 SIMPLE_JWT = {
     'AUTH_HEADER_TYPES': ('JWT',),
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
@@ -190,8 +194,8 @@ SIMPLE_JWT = {
     'ROTATE_REFRESH_TOKENS': True,
     'BLACKLIST_AFTER_ROTATION': True,
     'ALGORITHM': 'RS256',
-    'SIGNING_KEY': config('PRIVATE_KEY'),
-    'VERIFYING_KEY': config('PUBLIC_KEY'),
+    'SIGNING_KEY': PRIVATE_KEY,
+    'VERIFYING_KEY': PUBLIC_KEY,
 }
 
 # drf設定
