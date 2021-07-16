@@ -29,7 +29,7 @@ def set_userid_cookies(response):
         max_age=max_age,
         expires=expires,
         samesite='Lax',
-        secure=True,
+        # secure=True,
     )
 
 
