@@ -175,7 +175,7 @@ URL_FRONT = config('URL_FRONT')
 # dj_rest_auth設定
 SITE_ID = 1
 REST_USE_JWT = True
-JWT_AUTH_SAMESITE = 'None'
+JWT_AUTH_SAMESITE = 'Lax'
 JWT_AUTH_COOKIE = 'access'
 JWT_AUTH_REFRESH_COOKIE = 'refresh'
 JWT_AUTH_HTTPONLY = True
