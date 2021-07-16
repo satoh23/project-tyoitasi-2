@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG')
 
-ALLOWED_HOSTS = ['project-tyoitasi.herokuapp.com']
+ALLOWED_HOSTS = ['project-tyoitasi.herokuapp.com', 'www.tyoitasi.com']
 
 
 # Application definition
@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+    'sslserver',
     'corsheaders',
     'allauth',
     'allauth.account',
@@ -207,3 +208,9 @@ REST_FRAMEWORK = {
         'dj_rest_auth.utils.JWTCookieAuthentication',
     ],
 }
+
+# SSL
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SECURE_SSL_REDIRECT = False
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
