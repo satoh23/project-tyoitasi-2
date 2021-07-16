@@ -208,9 +208,3 @@ REST_FRAMEWORK = {
         'dj_rest_auth.utils.JWTCookieAuthentication',
     ],
 }
-
-# SSL
-# SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-# SECURE_SSL_REDIRECT = False
-# SESSION_COOKIE_SECURE = True
-# CSRF_COOKIE_SECURE = True
