@@ -71,7 +71,7 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -163,11 +163,11 @@ AUTHENTICATION_BACKENDS = [
 # email送信設定
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 DEFAULT_FROM_EMAIL = 'projecttyoitasi@gmail.com'
-EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST = 'smtp.sendgrid.net'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'projecttyoitasi@gmail.com'
-EMAIL_HOST_PASSWORD = '77ZdGropZCJWH5xYyupT'
+EMAIL_HOST_USER = 'apikey'
+EMAIL_HOST_PASSWORD = config('SENDGRID_API_KEY')
 ACCOUNT_EMAIL_SUBJECT_PREFIX = '【ちょいたし！】'
 ACCOUNT_ADAPTER = 'accounts.adapter.DefaultAccountAdapterCustom'
 URL_FRONT = config('URL_FRONT')
