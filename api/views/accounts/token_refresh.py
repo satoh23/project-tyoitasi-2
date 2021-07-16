@@ -11,7 +11,7 @@ def set_jwt_access_cookie(response, access_token):
     access_token_expiration = (timezone.now() + jwt_settings.ACCESS_TOKEN_LIFETIME)
     cookie_secure = getattr(settings, 'JWT_AUTH_SECURE', False)
     cookie_httponly = getattr(settings, 'JWT_AUTH_HTTPONLY', True)
-    cookie_samesite = getattr(settings, 'JWT_AUTH_SAMESITE', 'None')
+    cookie_samesite = getattr(settings, 'JWT_AUTH_SAMESITE', 'Lax')
 
     if cookie_name:
         response.set_cookie(
@@ -31,7 +31,7 @@ def set_jwt_refresh_cookie(response, refresh_token):
     refresh_cookie_path = getattr(settings, 'JWT_AUTH_REFRESH_COOKIE_PATH', '/')
     cookie_secure = getattr(settings, 'JWT_AUTH_SECURE', False)
     cookie_httponly = getattr(settings, 'JWT_AUTH_HTTPONLY', True)
-    cookie_samesite = getattr(settings, 'JWT_AUTH_SAMESITE', 'None')
+    cookie_samesite = getattr(settings, 'JWT_AUTH_SAMESITE', 'Lax')
 
     if refresh_cookie_name:
         response.set_cookie(

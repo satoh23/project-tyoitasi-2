@@ -99,7 +99,7 @@ class LoginView(GenericAPIView):
                                           context=self.get_serializer_context())
 
         response = Response(serializer.data, status=status.HTTP_200_OK)
-        if getattr(settings, 'REST_USE_JWT', True):
+        if getattr(settings, 'REST_USE_JWT', False):
             from dj_rest_auth.jwt_auth import set_jwt_cookies
             set_jwt_cookies(response, self.access_token, self.refresh_token)
             set_userid_cookies(response)
