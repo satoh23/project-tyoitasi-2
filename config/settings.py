@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG')
 
-ALLOWED_HOSTS = ['project-tyoitasi.herokuapp.com', 'www.tyoitasi.com']
+ALLOWED_HOSTS = []
 
 
 # Application definition
