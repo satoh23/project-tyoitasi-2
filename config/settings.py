@@ -16,20 +16,17 @@ from pathlib import Path
 import environ
 
 from Crypto.PublicKey import RSA
-from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
-SECRET_KEY = config('SECRET_KEY')
-DEBUG = config('DEBUG')
-
-ALLOWED_HOSTS = []
-
 env = environ.Env()
 env.read_env(os.path.join(BASE_DIR, '.env'))
 
+SECRET_KEY = env('SECRET_KEY')
+DEBUG = env('DEBUG')
+
+ALLOWED_HOSTS = []
 
 # Application definition
 
@@ -133,7 +130,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # 静的ファイル設定
 STATIC_URL = '/static/'
-STATIC_ROOT = str(BASE_DIR / 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # メディアファイル設定
 MEDIA_URL = '/media/'
@@ -163,10 +160,10 @@ EMAIL_HOST = 'smtp.sendgrid.net'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'apikey'
-EMAIL_HOST_PASSWORD = config('SENDGRID_API_KEY')
+EMAIL_HOST_PASSWORD = env('SENDGRID_API_KEY')
 ACCOUNT_EMAIL_SUBJECT_PREFIX = '【ちょいたし！】'
 ACCOUNT_ADAPTER = 'accounts.adapter.DefaultAccountAdapterCustom'
-URL_FRONT = config('URL_FRONT')
+URL_FRONT = env('URL_FRONT')
 
 # dj_rest_auth設定
 SITE_ID = 1
