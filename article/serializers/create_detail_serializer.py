@@ -40,13 +40,14 @@ class CreateDetailSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Detail
-        fields = ('thumbnail', 'encoded_thumbnail', 'title', 'body', 'material', 'category', 'author_id')
+        fields = ('thumbnail', 'encoded_thumbnail', 'title', 'body', 'main_material', 'material', 'category', 'author_id')
 
     def create(self, validated_data):
         article = Detail(thumbnail=validated_data['thumbnail'],
                          encoded_thumbnail=validated_data['encoded_thumbnail'],
                          title=validated_data['title'],
                          body=validated_data['body'],
+                         main_material=validated_data['main_material'],
                          material=validated_data['material'],
                          category=validated_data['category'],
                          author_id=validated_data['author_id'],

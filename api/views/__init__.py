@@ -1,5 +1,5 @@
 from .accounts import (LoginView, LogoutView, get_refresh_view,
-                       EditUserView)
+                       EditUserView, EditUserNotIconView)
 
 from .article import (CreateView, CreateNotThumbnailView,
                       ListCategoryView, ListDetailView, GetDetailArticleView)

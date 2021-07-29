@@ -2,3 +2,4 @@ from .custom_login_serializers import CustomLoginSerializer
 from .custom_user_serializer import CustomUserSerializer
 from .token_refresh_serializer import CookieTokenRefreshSerializer
 from .edit_user_serializer import EditUserSerializer
+from .edit_user_serializer_not_icon import EditUserNotIconSerializer

@@ -24,11 +24,9 @@ from dj_rest_auth.registration.views import VerifyEmailView
 urlpatterns = [
     path('jUWrbF5kqoNi66qHhNae/', admin.site.urls),
     path('api/v1/', include('api.urls')),
+    path('dj-rest-auth/', include('dj_rest_auth.urls')),
     path('dj-rest-auth/registration/', include('dj_rest_auth.registration.urls')),
     path('dj-rest-auth/account-confirm-email/', VerifyEmailView.as_view(), name='account_email_verification_sent'),
 ]
 
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-else:
-    urlpatterns += re_path(r'^media/(?<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT})
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

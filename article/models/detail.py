@@ -18,7 +18,8 @@ class Detail(models.Model):
     encoded_thumbnail = models.TextField('エンコードしたサムネイル', blank=True, null=True)
     title = models.CharField('タイトル', max_length=50)
     body = models.TextField('本文')
-    material = models.TextField('材料')
+    main_material = models.CharField('アレンジ元', max_length=50)
+    material = models.TextField('材料', null=True, blank=True)
     category = models.ForeignKey(Category, verbose_name='カテゴリ', on_delete=models.PROTECT)
     author_id = models.ForeignKey(CustomUser, verbose_name='筆者', on_delete=models.PROTECT)
 

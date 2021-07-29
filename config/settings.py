@@ -15,7 +15,7 @@ from datetime import timedelta
 from pathlib import Path
 import environ
 
-from Crypto.PublicKey import RSA
+from .key import PRIVATE_KEY, PUBLIC_KEY
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -24,7 +24,7 @@ env = environ.Env()
 env.read_env(os.path.join(BASE_DIR, '.env'))
 
 SECRET_KEY = env('SECRET_KEY')
-DEBUG = env('DEBUG')
+DEBUG = False
 
 ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
 
@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'rest_auth',
     'dj_rest_auth',
     'dj_rest_auth.registration',
+    'django_cleanup',
     'accounts.apps.AccountsConfig',
     'article.apps.ArticleConfig',
     'api.apps.ApiConfig',
@@ -141,7 +142,7 @@ AUTH_USER_MODEL = 'accounts.CustomUser'
 
 # cors設定
 CORS_ALLOWED_ORIGINS = (
-    'https://project-tyoitasi.vercel.app',
+    'https://project-tyoitasi-front.vercel.app',
 )
 CORS_ALLOW_CREDENTIALS = True
 
@@ -178,9 +179,6 @@ REST_AUTH_SERIALIZERS = {
 }
 
 # simple_jwt設定
-key = RSA.generate(2048)
-PRIVATE_KEY = key.export_key()
-PUBLIC_KEY = key.publickey().export_key()
 SIMPLE_JWT = {
     'AUTH_HEADER_TYPES': ('JWT',),
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
