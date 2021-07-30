@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'dj_rest_auth',
     'dj_rest_auth.registration',
     'django_cleanup',
+    'django_filters',
     'accounts.apps.AccountsConfig',
     'article.apps.ArticleConfig',
     'api.apps.ApiConfig',
@@ -197,5 +198,8 @@ REST_FRAMEWORK = {
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'dj_rest_auth.utils.JWTCookieAuthentication',
+    ],
+    'DEFAULT_FILTER_BACKENDS': [
+        'django_filters.rest_framework.DjangoFilterBackend',
     ],
 }
