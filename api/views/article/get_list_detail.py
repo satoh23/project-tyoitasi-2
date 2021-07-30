@@ -8,3 +8,4 @@ class ListDetailView(generics.ListAPIView):
     queryset = Detail.objects.all()
     serializer_class = ListDetailSerializer
     permission_classes = (AllowAny,)
+    filterset_fields = ['main_material', ]
